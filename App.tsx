@@ -6,7 +6,6 @@ import ProductCard from './ProductCard';
 import CartSidebar from './CartSidebar';
 import WhatsAppButton from './WhatsAppButton';
 import PaymentModal from './PaymentModal';
-import AIAssistant from './AIAssistant';
 import WelcomePopup from './WelcomePopup';
 
 const SECTIONS: Category[] = ['Secret Fish', 'Gamepass', 'Skin Crates', 'Enchant Items', 'Bundle Pack'];
@@ -156,8 +155,7 @@ const App: React.FC = () => {
         }}
         product={selectedProduct}
       />
-      
-      <AIAssistant />
+     
       <WhatsAppButton />
     </div>
   );
