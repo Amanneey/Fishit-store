@@ -77,16 +77,16 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
     
     const uniqueCode = `${date}${month}${year}${hours}${minutes}${seconds}`;
     
-    const transactionData = {
-      transaction_id: uniqueCode,
-      datetime: `${date}/${month}/${year} ${hours}:${minutes}:${seconds} WIB`,
-      product_name: product.name,
-      game_id: idGame,
-      total_price: product.price,
-      status: 'TERCATAT',
-      // === TAMBAHAN (AMAN, TIDAK DIPAKAI SHEET) ===
-      customer_wa: whatsapp || 'Tidak ada'
-    };
+  const transactionData = {
+  id: uniqueCode,
+  productName: product.name,
+  gameId: idGame,
+  price: product.price,
+  customerWa: whatsapp || 'Tidak ada',
+  date: `${date}/${month}/${year}`,
+  time: `${hours}:${minutes}:${seconds} WIB`,
+  status: 'PAID'
+};
 
     await logTransaction(transactionData);
 
