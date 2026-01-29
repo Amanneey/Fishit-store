@@ -83,15 +83,13 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
     const uniqueCode = `${date}${month}${year}${hours}${minutes}${seconds}`;
     
     const transactionData = {
-      id: uniqueCode,
-      productName: product.name,
-      price: product.price,
-      gameId: idGame,
-      customerWa: whatsapp || 'Tidak ada',
-      date: `${date}/${month}/${year}`,
-      time: `${hours}:${minutes}:${seconds} WIB`,
-      status: 'PAID'
-    };
+  transaction_id: uniqueCode,
+  product_name: product.name,
+  category: product.category,
+  game_id: idGame,
+  price: product.price
+};
+
 
     await logTransaction(transactionData);
 
