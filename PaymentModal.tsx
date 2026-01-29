@@ -46,16 +46,16 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
   const logTransaction = async (data: any) => {
   try {
     const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
     });
 
-    console.log('Webhook response:', res);
+    console.log("Spreadsheet response:", res.status);
   } catch (err) {
-    console.error('Gagal kirim ke Google Sheet:', err);
+    console.error("Gagal kirim ke Google Sheet:", err);
   }
 };
 
@@ -80,16 +80,11 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
   const transactionData = {
   transaction_id: uniqueCode,
   product_name: product.name,
-  category: product.category,
   game_id: idGame,
-  price: product.price,
-  quantity: 1,
   total_price: product.price,
-  payment_status: 'PAID',
-  payment_method: 'QRIS',
-  server_link: privateServerUrl,
-  wa_reminder_source: 'website',
-  created_at: `${date}/${month}/${year} ${hours}:${minutes}:${seconds} WIB`
+  date: `${date}/${month}/${year}`,
+  time: `${hours}:${minutes}:${seconds} WIB`,
+  status: "PAID"
 };
 
 
