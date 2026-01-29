@@ -44,25 +44,20 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
   const privateServerUrl = "https://www.roblox.com/share?code=eb8ac06f96738c4b9fa374eacd15f495&type=Server";
 
   const logTransaction = async (data: any) => {
-    // 1. Simpan ke database lokal browser (LocalStorage)
-    const history = JSON.parse(localStorage.getItem('transaction_history') || '[]');
-    history.push(data);
-    localStorage.setItem('transaction_history', JSON.stringify(history));
+  try {
+    const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
-    // 2. Kirim ke Google Sheets jika URL tersedia
-    if (GOOGLE_SHEET_WEBHOOK_URL) {
-      try {
-        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-      } catch (e) {
-        console.error("Gagal mengirim ke Spreadsheet:", e);
-      }
-    }
-  };
+    console.log('Webhook response:', res);
+  } catch (err) {
+    console.error('Gagal kirim ke Google Sheet:', err);
+  }
+};
 
   const handleConfirm = async () => {
     if (!idGame.trim()) {
