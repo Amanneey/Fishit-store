@@ -21,7 +21,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
   const adminNumber = "6285198326016"; 
   
   // GANTI URL INI dengan URL Webhook Google Apps Script Anda nanti
-  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzS39qAAcT-humTiwaWoPV6YlwRmc56766pZpWlVRc_A136qES1XStXw0880o7j-Ogg/exec"; 
+  const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzPI4dZ8C7trtJjVsTLPbdh6QB6rBqy5MysSJGScRtXfi5M_tJQJ-ZYiIhW24lHtyIq/exec"; 
 
   useEffect(() => {
     if (!isOpen) {
