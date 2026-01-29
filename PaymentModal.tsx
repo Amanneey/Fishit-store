@@ -83,11 +83,12 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, product })
     const uniqueCode = `${date}${month}${year}${hours}${minutes}${seconds}`;
     
 const transactionData = {
-  transaction_id: uniqueCode,        // KODE UNIK
-  product_name: product.name,        // NAMA PRODUK
-  game_id: idGame.trim(),             // USERNAME / NAMA
-  price: product.price               // HARGA
+  transaction_id: uniqueCode,
+  product_name: product.name,
+  game_id: idGame,
+  price: product.price
 };
+
     
     await logTransaction(transactionData);
 
